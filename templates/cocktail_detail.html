@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail Detail</title>
+</head>
+<body>
+    <h1>Cocktail Detail</h1>
+    {% if cocktail %}
+        <h2>{{ cocktail.strDrink }}</h2>
+        <p><strong>Tags:</strong> {{ cocktail.strTags }}</p>
+        <p><strong>Category:</strong> {{ cocktail.strCategory }}</p>
+        <p><strong>Alcoholic:</strong> {{ cocktail.strAlcoholic }}</p>
+        <p><strong>Glass:</strong> {{ cocktail.strGlass }}</p>
+        <p><strong>Instructions:</strong> {{ cocktail.strInstructions }}</p>
+        <p><strong>Ingredients:</strong></p>
+        <ul>
+            {% for i in range(1, 16) %}
+                {% set ingredient = cocktail['strIngredient' ~ i] %}
+                {% set measure = cocktail['strMeasure' ~ i] %}
+                {% if ingredient and measure %}
+                    <li>{{ measure }} {{ ingredient }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <img src="{{ cocktail.strDrinkThumb }}" alt="{{ cocktail.strDrink }}">
+    {% else %}
+        <p>No se encontraron detalles para este cocktail.</p>
+    {% endif %}
+    <a href="{{ url_for('cocktail_list') }}">Volver a la lista de cocktails</a>
+</body>
+</html>
