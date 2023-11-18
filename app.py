@@ -26,4 +26,4 @@ def cocktail_detail(cocktail_id):
     return render_template('cocktail_detail.html', cocktail=cocktail)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=7000,debug=True)
