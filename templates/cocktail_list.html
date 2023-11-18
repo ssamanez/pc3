@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail List</title>
+</head>
+<body>
+    <h1>Cocktail List</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        {% for cocktail in cocktails %}
+            <tr>
+                <td>{{ cocktail.idDrink }}</td>
+                <td><a href="{{ url_for('cocktail_detail', cocktail_id=cocktail.idDrink) }}">{{ cocktail.strDrink }}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
